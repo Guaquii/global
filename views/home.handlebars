@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Usuarios</title>
+    <link rel="stylesheet" href="/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Listado de Usuarios</h1>
+        <div class="filters">
+            <div class="filter-group">
+                <label for="filter-id">ID:</label>
+                <input type="text" id="filter-id">
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-first_name">Nombre:</label>
+                <input type="text" id="filter-first_name">
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-last_name">Apellido:</label>
+                <input type="text" id="filter-last_name">
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-email">Email:</label>
+                <input type="text" id="filter-email">
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-gender">Género:</label>
+                <input type="text" id="filter-gender">
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-ip_address">Dirección IP:</label>
+                <input type="text" id="filter-ip_address">
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-country">País:</label>
+                <input type="text" id="filter-country">
+            </div>
+
+            <button onclick="applyFilters()" class="search-button">Buscar</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID <button onclick="sortTable(0, 'id')">↕</button></th>
+                    <th>Nombre <button onclick="sortTable(1, 'first_name')">↕</button></th>
+                    <th>Apellido <button onclick="sortTable(2, 'last_name')">↕</button></th>
+                    <th>Email <button onclick="sortTable(3, 'email')">↕</button></th>
+                    <th>Género <button onclick="sortTable(4, 'gender')">↕</button></th>
+                    <th>Dirección IP <button onclick="sortTable(5, 'ip_address')">↕</button></th>
+                    <th>País <button onclick="sortTable(6, 'country')">↕</button></th>
+                </tr>
+            </thead>
+            <tbody id="user-table">
+                {{#each usuarios}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.first_name}}</td>
+                    <td>{{this.last_name}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.gender}}</td>
+                    <td>{{this.ip_address}}</td>
+                    <td>{{this.country}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <div class="pagination">
+            <button onclick="prevPage()">Anterior</button>
+            <span id="page-info">Página 1</span>
+            <button onclick="nextPage()">Siguiente</button>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
